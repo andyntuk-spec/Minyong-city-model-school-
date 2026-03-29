@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minyong City Model School</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #e6f2ff;
+      text-align: center;
+    }
+
+    h1 { color: #004080; }
+
+    form {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      width: 320px;
+      border-radius: 10px;
+    }
+
+    input, select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 5px;
+    }
+
+    button {
+      background: #004080;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Minyong City Model School</h1>
+<p>Apply for Admission</p>
+
+<form onsubmit="apply(event)">
+  <input type="text" id="name" placeholder="Student Name" required><br>
+  <input type="number" id="age" placeholder="Age" required><br>
+
+  <select id="class">
+    <option>Primary</option>
+    <option>Junior Secondary</option>
+    <option>Senior Secondary</option>
+  </select><br>
+
+  <input type="tel" id="phone" placeholder="Parent Phone" required><br>
+
+  <button type="submit">Apply Now</button>
+</form>
+
+<script>
+function apply(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let studentClass = document.getElementById("class").value;
+  let phone = document.getElementById("phone").value;
+
+  let message = `Hello Minyong School,%0A
+Student Name: ${name}%0A
+Age: ${age}%0A
+Class: ${studentClass}%0A
+Parent Phone: ${phone}`;
+
+  let yourNumber = "234XXXXXXXXXX"; // put your number
+
+  window.open(`https://wa.me/${yourNumber}?text=${message}`, "_blank");
+}
+</script>
+
+</body>
+</html>
