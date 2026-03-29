@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minyong City Model School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f0f8ff;
+    }
+
+    header {
+      background: #004080;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      background: #00264d;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #004080;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px auto;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      margin: auto;
+      width: 320px;
+      border-radius: 10px;
+    }
+
+    input, select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 5px;
+    }
+
+    button {
+      background: #004080;
+      color: white;
+      border: none;
+    }
+
+    footer {
+      background: #00264d;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Minyong City Model School</h1>
+  <p>Building Future Leaders</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#programs">Programs</a>
+  <a href="#admission">Admission</a>
+</nav>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Minyong City Model School is committed to providing quality education and building responsible leaders for tomorrow.</p>
+</section>
+
+<section id="programs">
+  <h2>Our Programs</h2>
+
+  <div class="card">📘 Primary Education</div>
+  <div class="card">📗 Junior Secondary</div>
+  <div class="card">📕 Senior Secondary</div>
+</section>
+
+<section id="admission">
+  <h2>Apply for Admission</h2>
+
+  <form onsubmit="apply(event)">
+    <input type="text" id="name" placeholder="Student Name" required><br>
+    <input type="number" id="age" placeholder="Age" required><br>
+
+    <select id="class">
+      <option>Primary</option>
+      <option>JSS1</option>
+      <option>JSS2</option>
+      <option>SS1</option>
+      <option>SS2</option>
+    </select><br>
+
+    <input type="tel" id="phone" placeholder="Parent Phone Number" required><br>
+
+    <button type="submit">Apply Now</button>
+  </form>
+
+</section>
+
+<footer>
+  <p>© 2026 Minyong City Model School</p>
+</footer>
+
+<script>
+function apply(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let age = document.getElementById("age").value;
+  let studentClass = document.getElementById("class").value;
+  let phone = document.getElementById("phone").value;
+
+  let message = `Hello Minyong School,%0A
+Student Name: ${name}%0A
+Age: ${age}%0A
+Class: ${studentClass}%0A
+Parent Phone: ${phone}`;
+
+  let yourNumber = "2349011336824"; // PUT YOUR NUMBER
+
+  window.open(`https://wa.me/${yourNumber}?text=${message}`, "_blank");
+
+  alert("Application sent successfully!");
+}
+</script>
+
+</body>
+</html>
