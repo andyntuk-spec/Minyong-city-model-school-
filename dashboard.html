@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard - Minyong School</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    h1 {
+      background: #004080;
+      color: white;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+
+    button {
+      padding: 8px;
+      margin-top: 10px;
+      background: #004080;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<div id="applications"></div>
+
+<script>
+let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+function displayApplications(){
+  let container = document.getElementById("applications");
+  container.innerHTML = "";
+
+  if(applications.length === 0){
+    container.innerHTML = "<p>No applications yet</p>";
+    return;
+  }
+
+  applications.forEach((app, index) => {
+    container.innerHTML += `
+      <div class="card">
+        <p><b>Name:</b> ${app.name}</p>
+        <p><b>Age:</b> ${app.age}</p>
+        <p><b>Class:</b> ${app.class}</p>
+        <p><b>Phone:</b> ${app.phone}</p>
+
+        <button onclick="reply(${index})">Reply</button>
+      </div>
+    `;
+  });
+}
+
+function reply(i){
+  let app = applications[i];
+
+  let message = `Hello ${app.name}, your admission request has been received.`;
+
+  alert("Send this message:\\n\\n" + message);
+}
+
+displayApplications();
+</script>
+
+</body>
+</html>
