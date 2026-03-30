@@ -26,7 +26,7 @@
 
     button {
       padding: 8px;
-      margin-top: 10px;
+      margin: 5px;
       background: #004080;
       color: white;
       border: none;
@@ -67,18 +67,26 @@
           <p><b>Class:</b> ${app.class}</p>
           <p><b>Phone:</b> ${app.phone}</p>
 
-          <button onclick="reply(${index})">Reply</button>
+          <button onclick="callUser(${index})">Call</button>
+          <button onclick="smsUser(${index})">SMS</button>
         </div>
       `;
     });
   }
 
-  function reply(i){
+  // 📞 Call function
+  function callUser(i){
+    let app = applications[i];
+    window.location.href = `tel:${app.phone}`;
+  }
+
+  // 💬 SMS function
+  function smsUser(i){
     let app = applications[i];
 
     let message = `Hello ${app.name}, your admission request has been received.`;
 
-    alert("Send this message:\n\n" + message);
+    window.location.href = `sms:${app.phone}?body=${encodeURIComponent(message)}`;
   }
 
   function logout(){
