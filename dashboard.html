@@ -79,9 +79,51 @@ function reply(i){
 displayApplications();
 </script>
 <button onclick="logout()">Logout</button>
+
+<script>
+  if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+  }
+
+  let applications = JSON.parse(localStorage.getItem("applications")) || [];
+
+  function displayApplications(){
+    let container = document.getElementById("applications");
+    container.innerHTML = "";
+
+    if(applications.length === 0){
+      container.innerHTML = "<p>No applications yet</p>";
+      return;
+    }
+
+    applications.forEach((app, index) => {
+      container.innerHTML += `
+        <div class="card">
+          <p><b>Name:</b> ${app.name}</p>
+          <p><b>Age:</b> ${app.age}</p>
+          <p><b>Class:</b> ${app.class}</p>
+          <p><b>Phone:</b> ${app.phone}</p>
+
+          <button onclick="reply(${index})">Reply</button>
+        </div>
+      `;
+    });
+  }
+
+  function reply(i){
+    let app = applications[i];
+
+    let message = `Hello ${app.name}, your admission request has been received.`;
+
+    alert("Send this message:\n\n" + message);
+  }
+
   function logout(){
-  localStorage.removeItem("loggedIn");
-  window.location.href = "login.html";
-}
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login.html";
+  }
+
+  displayApplications();
+</script>
 </body>
 </html>
