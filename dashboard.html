@@ -40,6 +40,9 @@
 <div id="applications"></div>
 
 <script>
+  if(localStorage.getItem("loggedIn") !== "true"){
+  window.location.href = "login.html";
+  }
 let applications = JSON.parse(localStorage.getItem("applications")) || [];
 
 function displayApplications(){
